@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Relaxing Isometric Builder</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="world-wrap">
+        <div class="world-top-right">
+          <div id="hover-coord" class="hover-coord">x: -, y: -</div>
+          <button id="zoom-out" type="button" aria-label="Zoom out" title="Zoom out">Zoom -</button>
+          <span id="zoom-level" class="zoom-level">100%</span>
+          <button id="zoom-in" type="button" aria-label="Zoom in" title="Zoom in">Zoom +</button>
+        </div>
+        <p id="save-status" class="save-status">No saved map loaded yet.</p>
+        <canvas id="world" width="1280" height="720"></canvas>
+      </section>
+      <section class="palette-wrap">
+        <h2>Toolbox</h2>
+        <p class="tip">
+          Left click paints. Right click erases selected layer. Drag with middle mouse to pan.
+        </p>
+        <h3 class="section-subheading">Layer Options</h3>
+        <div class="layer-controls">
+          <span id="layer-label" class="layer-label">Current 1 of 1</span>
+          <button id="layer-next" type="button" aria-label="Next layer" title="Select higher layer">&uarr;</button>
+          <button id="layer-prev" type="button" aria-label="Previous layer" title="Select lower layer">&darr;</button>
+          <button id="layer-add" type="button" aria-label="Add layer" title="Add a new layer above">+</button>
+          <button id="layer-remove" type="button" aria-label="Remove layer" title="Delete current layer">-</button>
+          <button id="layer-isolate" type="button" aria-label="Isolate active layer" title="Ghost non-active layers">Isolate: Off</button>
+          <button id="layer-hide-isolated" type="button" aria-label="Hide isolated layers" title="Hide non-active layers while isolate is on">Hide Isolated: Off</button>
+        </div>
+        <div class="bg-controls">
+          <label class="bg-picker" for="bg-color">Background Color</label>
+          <input id="bg-color" type="color" aria-label="Canvas background color" value="#17171e" />
+        </div>
+        <div class="save-controls">
+          <button id="undo-stroke" type="button" title="Undo last stroke">Undo</button>
+          <button id="save-map" type="button" title="Save map to browser">Save</button>
+          <button id="load-map" type="button" title="Load map from browser save">Load</button>
+          <button id="new-map" type="button" title="Clear map and reset editor">New</button>
+          <button id="export-map" type="button" title="Export map as JSON">Export</button>
+          <button id="export-image" type="button" title="Export PNG image without grid">Export Image</button>
+          <button id="import-map" type="button" title="Import map from JSON">Import</button>
+          <input id="import-file" type="file" accept="application/json" hidden />
+        </div>
+        <h3>Tile Palette</h3>
+        <p id="palette-status">Loading spritesheet...</p>
+        <div id="palette" class="palette" aria-label="Tile palette"></div>
+      </section>
+    </main>
+    <div id="confirm-modal" class="confirm-modal" hidden>
+      <div class="confirm-panel" role="dialog" aria-modal="true" aria-labelledby="confirm-message">
+        <p id="confirm-message" class="confirm-message">Are you sure?</p>
+        <div class="confirm-actions">
+          <button id="confirm-no" type="button">No</button>
+          <button id="confirm-yes" type="button">Yes</button>
+        </div>
+      </div>
+    </div>
+    <script src="./scripts.js"></script>
+  </body>
+</html>
